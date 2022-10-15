@@ -1,0 +1,6 @@
+env = "staging"
+project_id = "stay-364123"
+location = "europe-west1"
+web_app_name = "api-${env}"
+bastion_app_name = "bastion-${env}"
+vpc_app_name = "vpc-${env}"
