@@ -2,13 +2,14 @@
 module "web-api" {
     source = "../../modules/api"
     project_id = var.project_id
-    location = var.location
+    region = var.region
 }
 
 module "web-front" {
     source = "../../modules/front"
-    name = "Front-end web application"
+    name = "web-front"
     location = var.location
+    image_url = var.image_url
 }
 
 # FIREWALL
@@ -18,8 +19,12 @@ module "firewall-web" {
     action       = "ALLOW"
     description  = "Allow all IPs to access this resource"
     priority     = 1000
+    project_id      = var.project_id
 }
 
-/* ---- */
-
+# DATABASE
+module "nosql-database" {
+    source = "../../modules/firebase"
+    project_id = var.project_id
+}
 

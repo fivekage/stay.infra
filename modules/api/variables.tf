@@ -1,8 +1,3 @@
-variable "location" {
-    description = "Location to serve the app from"
-    type = string
-}
-
 variable "project_id" {
     description = "Project ID"
     type = string
@@ -35,4 +30,12 @@ variable "serving_status" {
     condition     = var.serving_status == null || contains(["UNSPECIFIED", "SERVING", "USER_DISABLED", "SYSTEM_DISABLED"], var.serving_status == null ? "" : var.serving_status)
     error_message = "The serving status of the app must be one of [UNSPECIFIED, SERVING, USER_DISABLED, SYSTEM_DISABLED]."
   }
+}
+variable "region" {
+    description = "Location where region store bucket"
+    type = string
+    validation {
+      condition     = var.region == "us-central" || var.region == "europe-west"
+      error_message = "Value must be us-central or europe-west."
+    }
 }
