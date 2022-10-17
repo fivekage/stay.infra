@@ -24,6 +24,12 @@ variable "region" {
   }
 }
 
+variable "GOOGLE_CREDENTIALS" {
+  description = "GCP credentials used for authentication"
+  default     = ""
+  type        = string
+}
+
 variable "image_url" {
   description = "URL image application"
   type        = string

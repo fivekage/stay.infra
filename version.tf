@@ -15,11 +15,13 @@ terraform {
 }
 
 provider "google" {
-  project = var.project_id
-  region  = var.location
+  project     = var.project_id
+  region      = var.location
+  credentials = var.GOOGLE_CREDENTIALS
 }
 
 provider "google-beta" {
-  project = var.project_id
-  region  = var.location
+  project     = var.project_id
+  region      = var.location
+  credentials = var.GOOGLE_CREDENTIALS
 }
