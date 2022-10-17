@@ -6,7 +6,6 @@ variable "env" {
 variable "project_id" {
   description = "Project ID"
   type        = string
-  default     = "stay-364123"
 }
 
 variable "location" {
