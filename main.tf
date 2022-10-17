@@ -1,8 +1,9 @@
 # INSTANCES
 module "web-api" {
-  source     = "./modules/api"
-  project_id = var.project_id
-  region     = var.region
+  source        = "./modules/api"
+  project_id    = var.project_id
+  region        = var.region
+  database_type = "CLOUD_DATASTORE_COMPATIBILITY"
 }
 
 module "web-front" {
