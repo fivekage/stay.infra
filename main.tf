@@ -2,9 +2,9 @@
 
 module "google-project" {
   source          = "./modules/project"
-  name            = var.project_name
-  project_id      = var.project_id
-  billing_account = var.billing_account
+  name            = var.PROJECT_NAME
+  project_id      = var.PROJECT_ID
+  billing_account = var.BILLING_ACCOUNT
   skip_delete     = true
 }
 
@@ -36,6 +36,6 @@ module "firewall-web" {
 # DATABASE
 module "nosql-database" {
   source     = "./modules/firebase"
-  project_id = var.project_id
+  project_id = var.PROJECT_ID
 }
 
