@@ -1,6 +1,6 @@
 resource "google_app_engine_application" "web_api" {
-  project     = var.project_id
-  location_id = var.region
+  project        = var.project_id
+  location_id    = var.region
   auth_domain    = var.auth_domain
   database_type  = var.database_type
   serving_status = var.serving_status
