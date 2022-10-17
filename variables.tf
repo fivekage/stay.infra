@@ -1,30 +1,30 @@
 variable "env" {
-    description = "The environment to deploy to"
-    type = string
+  description = "The environment to deploy to"
+  type        = string
 }
 
 variable "project_id" {
-    description = "Project ID"
-    type = string
-    default = "stay-364123"
+  description = "Project ID"
+  type        = string
+  default     = "stay-364123"
 }
 
 variable "location" {
-    description = "Location to serve the app from"
-    type = string
-    default = "europe-west1"
+  description = "Location to serve the app from"
+  type        = string
+  default     = "europe-west1"
 }
 variable "region" {
-    description = "Location where region store bucket"
-    type = string
-    default = "europe-west"
-    validation {
-      condition     = var.region == null || var.region == "us-central" || var.region == "europe-west"
-      error_message = "Value must be us-central or europe-west."
-    }
+  description = "Location where region store bucket"
+  type        = string
+  default     = "europe-west"
+  validation {
+    condition     = var.region == null || var.region == "us-central" || var.region == "europe-west"
+    error_message = "Value must be us-central or europe-west."
+  }
 }
 
 variable "image_url" {
-    description = "URL image application"
-    type = string
+  description = "URL image application"
+  type        = string
 }
