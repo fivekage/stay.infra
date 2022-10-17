@@ -3,17 +3,17 @@ variable "env" {
   type        = string
 }
 
-variable "PROJECT_NAME" {
+variable "project_name" {
   description = "Project name"
   type        = string
 }
 
-variable "BILLING_ACCOUNT" {
+variable "billing_account" {
   description = "Billing Account"
   type        = string
 }
 
-variable "PROJECT_ID" {
+variable "project_id" {
   description = "Project ID"
   type        = string
 }
