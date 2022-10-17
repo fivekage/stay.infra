@@ -1,0 +1,5 @@
+env        = "staging"
+project_id = "stay-364123"
+location   = "europe-west1"
+region     = "europe-west"
+image_url  = "gcr.io/google-samples/hello-app:1.0"

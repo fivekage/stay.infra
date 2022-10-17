@@ -7,3 +7,8 @@ variable "name" {
     description = "App name"
     type = string
 }
+
+variable "image_url" {
+    description = "URL image application"
+    type = string
+}

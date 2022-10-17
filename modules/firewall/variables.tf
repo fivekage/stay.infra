@@ -36,3 +36,8 @@ variable "priority" {
     error_message = "Prirority must be an integer number bigger than 1."
   }
 }
+
+variable "project_id" {
+    description = "Project ID"
+    type = string
+}

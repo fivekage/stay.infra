@@ -1,15 +1,6 @@
-terraform {
-  required_providers {
-    google = {
-      source = "hashicorp/google"
-      version = "<= 3.49"
-    }
-  }
-}
-
 resource "google_app_engine_application" "web_api" {
   project     = var.project_id
-  location_id = var.location
+  location_id = var.region
   auth_domain    = var.auth_domain
   database_type  = var.database_type
   serving_status = var.serving_status
