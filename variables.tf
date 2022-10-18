@@ -3,10 +3,19 @@ variable "env" {
   type        = string
 }
 
+variable "project_name" {
+  description = "Project name"
+  type        = string
+}
+
+variable "billing_account" {
+  description = "Billing Account"
+  type        = string
+}
+
 variable "project_id" {
   description = "Project ID"
   type        = string
-  default     = "stay-364123"
 }
 
 variable "location" {
