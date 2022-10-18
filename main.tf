@@ -1,5 +1,4 @@
 # PROJECT
-
 module "google-project" {
   source          = "./modules/project"
   name            = var.project_name

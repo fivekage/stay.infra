@@ -1,12 +1,6 @@
 resource "google_project" "stay" {
-  name            = "Stay"
-  project_id      = "stay-365814"
-  folder_id       = google_folder.stay.name
-  billing_account = "012636-EE4503-979BC9"
+  name            = var.name
+  project_id      = var.project_id
+  billing_account = var.billing_account
   skip_delete     = true
-}
-
-resource "google_folder" "stay" {
-  display_name = "Stay Projects"
-  parent       = "organizations/1234567"
 }
