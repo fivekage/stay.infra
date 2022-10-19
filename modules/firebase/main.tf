@@ -4,23 +4,23 @@ resource "google_firebase_project" "this" {
   project  = var.project_id
 }
 
-resource "google_firebase_web_app" "basic" {
+resource "google_firebase_web_app" "this" {
   provider     = google-beta
-  project      = google_project.this.project_id
-  display_name = "Display Name Basic"
+  project      = var.project_id
+  display_name = "Stay"
 
   depends_on = [google_firebase_project.this]
 }
 
-data "google_firebase_web_app_config" "basic" {
+data "google_firebase_web_app_config" "this" {
   provider   = google-beta
-  web_app_id = google_firebase_web_app.basic.app_id
+  web_app_id = google_firebase_web_app.this.app_id
 }
 
 resource "google_storage_bucket" "this" {
   provider = google-beta
-  name     = "fb-webapp-"
-  location = "US"
+  name     = local.bucket_name
+  location = var.location
 }
 
 resource "google_storage_bucket_object" "this" {
@@ -29,12 +29,12 @@ resource "google_storage_bucket_object" "this" {
   name     = "firebase-config.json"
 
   content = jsonencode({
-    appId             = google_firebase_web_app.basic.app_id
-    apiKey            = data.google_firebase_web_app_config.basic.api_key
-    authDomain        = data.google_firebase_web_app_config.basic.auth_domain
-    databaseURL       = lookup(data.google_firebase_web_app_config.basic, "database_url", "")
-    storageBucket     = lookup(data.google_firebase_web_app_config.basic, "storage_bucket", "")
-    messagingSenderId = lookup(data.google_firebase_web_app_config.basic, "messaging_sender_id", "")
-    measurementId     = lookup(data.google_firebase_web_app_config.basic, "measurement_id", "")
+    appId             = google_firebase_web_app.this.app_id
+    apiKey            = data.google_firebase_web_app_config.this.api_key
+    authDomain        = data.google_firebase_web_app_config.this.auth_domain
+    databaseURL       = lookup(data.google_firebase_web_app_config.this, "database_url", "")
+    storageBucket     = lookup(data.google_firebase_web_app_config.this, "storage_bucket", "")
+    messagingSenderId = lookup(data.google_firebase_web_app_config.this, "messaging_sender_id", "")
+    measurementId     = lookup(data.google_firebase_web_app_config.this, "measurement_id", "")
   })
 }

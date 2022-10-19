@@ -1,8 +1,12 @@
-variable "project_id" {
-    description = "Project ID"
-    type = string
+variable "env" {
+  description = "Environment"
+  type        = string
 }
 
+variable "project_id" {
+  description = "Project ID"
+  type        = string
+}
 
 variable "auth_domain" {
   description = "(Optional) The domain to authenticate users with when using App Engine's User API."
@@ -32,10 +36,16 @@ variable "serving_status" {
   }
 }
 variable "region" {
-    description = "Location where region store bucket"
-    type = string
-    validation {
-      condition     = var.region == "us-central" || var.region == "europe-west"
-      error_message = "Value must be us-central or europe-west."
-    }
+  description = "Location where region store bucket"
+  type        = string
+}
+
+variable "location" {
+  description = "Location to serve the app from"
+  type        = string
+}
+
+variable "repository_id" {
+  description = "Repository ID"
+  type        = string
 }

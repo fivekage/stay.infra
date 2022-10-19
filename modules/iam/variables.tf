@@ -2,13 +2,13 @@ variable "project_id" {
   description = "Project ID"
   type        = string
 }
-variable "location" {
-  description = "Location"
+
+variable "service_account_id" {
+  description = "Service Account ID"
   type        = string
-  default     = "EU"
 }
 
-variable "env" {
-  description = "Environment used"
+variable "role" {
+  description = "Role"
   type        = string
 }
