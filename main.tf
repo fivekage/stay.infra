@@ -19,7 +19,7 @@ module "web-api" {
   source        = "./modules/api"
   project_id    = var.project_id
   region        = var.region
-  database_type = "CLOUD_DATASTORE_COMPATIBILITY"
+  database_type = "CLOUD_FIRESTORE"
 }
 
 module "web-front" {
