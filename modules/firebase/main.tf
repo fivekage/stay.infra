@@ -14,7 +14,7 @@ data "google_firebase_web_app_config" "this" {
 resource "google_storage_bucket" "this" {
   provider = google-beta
   name     = local.bucket_name
-  location = var.location
+  location = "EU"
 }
 
 resource "google_storage_bucket_object" "this" {
@@ -31,33 +31,4 @@ resource "google_storage_bucket_object" "this" {
     messagingSenderId = lookup(data.google_firebase_web_app_config.this, "messaging_sender_id", "")
     measurementId     = lookup(data.google_firebase_web_app_config.this, "measurement_id", "")
   })
-}
-
-# ENABLE FIRESTORE
-resource "null_resource" "enable_firestore" {
-  provisioner "local-exec" {
-    command = "make firestore"
-  }
-
-}
-
-resource "google_firestore_index" "trainings_user_time" {
-  collection = "trainings"
-
-  fields {
-    field_path = "UserUuid"
-    order      = "ASCENDING"
-  }
-
-  fields {
-    field_path = "Time"
-    order      = "ASCENDING"
-  }
-
-  fields {
-    field_path = "__name__"
-    order      = "ASCENDING"
-  }
-
-  depends_on = [null_resource.enable_firestore]
 }

@@ -5,6 +5,7 @@ locals {
     "oslogin.googleapis.com",
     "compute.googleapis.com",
     "serviceusage.googleapis.com",
+    "firestore.googleapis.com",
     "firebasehosting.googleapis.com",
     "firebase.googleapis.com",
     "appengine.googleapis.com",
