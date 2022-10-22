@@ -1,22 +1,8 @@
 # DATABASE
-resource "google_firebase_project" "this" {
-  provider = google-beta
-  project  = var.project_id
-}
-
 resource "google_firebase_web_app" "this" {
   provider     = google-beta
   project      = var.project_id
   display_name = "Stay"
-
-  depends_on = [google_firebase_project.this]
-}
-
-resource "google_firebase_project_location" "this" {
-  provider = google-beta
-  project  = google_firebase_project.this.project
-
-  location_id = var.location
 }
 
 data "google_firebase_web_app_config" "this" {
@@ -53,7 +39,6 @@ resource "null_resource" "enable_firestore" {
     command = "make firestore"
   }
 
-  depends_on = [google_firebase_project_location.this]
 }
 
 resource "google_firestore_index" "trainings_user_time" {

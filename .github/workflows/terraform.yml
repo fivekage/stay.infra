@@ -14,9 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     env:
-      TF_VAR_project_id: ${{ secrets.TF_VAR_PROJECT_ID }}
-      TF_VAR_billing_account: ${{ secrets.BILLING_ACCOUNT }}
-      TF_VAR_project_name: ${{ secrets.TF_VAR_PROJECT_NAME }}
+      PROJECT_ID: ${{ secrets.TF_VAR_PROJECT_ID }}
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -44,7 +42,7 @@ jobs:
 
       # Set up the gcloud CLI
       - name: Set up project
-        run: gcloud config set project ${{ secrets.TF_VAR_PROJECT_ID }}
+        run: gcloud config set project $PROJECT_ID
 
       # Enable Cloud Resource Manager API
       - name: Enable Cloud Resource Manager API
