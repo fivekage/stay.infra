@@ -24,6 +24,7 @@ data "google_firebase_web_app_config" "this" {
   web_app_id = google_firebase_web_app.this.app_id
 }
 
+# STORE CONFIG INTO A BUCKET
 resource "google_storage_bucket" "this" {
   provider = google-beta
   name     = local.bucket_name
@@ -44,4 +45,34 @@ resource "google_storage_bucket_object" "this" {
     messagingSenderId = lookup(data.google_firebase_web_app_config.this, "messaging_sender_id", "")
     measurementId     = lookup(data.google_firebase_web_app_config.this, "measurement_id", "")
   })
+}
+
+# ENABLE FIRESTORE
+resource "null_resource" "enable_firestore" {
+  provisioner "local-exec" {
+    command = "make firestore"
+  }
+
+  depends_on = [google_firebase_project_location.this]
+}
+
+resource "google_firestore_index" "trainings_user_time" {
+  collection = "trainings"
+
+  fields {
+    field_path = "UserUuid"
+    order      = "ASCENDING"
+  }
+
+  fields {
+    field_path = "Time"
+    order      = "ASCENDING"
+  }
+
+  fields {
+    field_path = "__name__"
+    order      = "ASCENDING"
+  }
+
+  depends_on = [null_resource.enable_firestore]
 }
