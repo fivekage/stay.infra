@@ -1,7 +1,7 @@
 locals {
   services = [
-    "run.googleapis.com",
     "cloudresourcemanager.googleapis.com",
+    "run.googleapis.com",
     "oslogin.googleapis.com",
     "compute.googleapis.com",
     "serviceusage.googleapis.com",
