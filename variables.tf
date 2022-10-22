@@ -46,11 +46,6 @@ variable "GOOGLE_CREDENTIALS" {
   type        = string
 }
 
-variable "image_url" {
-  description = "URL image application"
-  type        = string
-}
-
 variable "service_account_id" {
   description = "Stay Service Account"
   type        = string

@@ -30,18 +30,7 @@ module "web-api" {
   location      = var.location
 
   depends_on = [
-    module.iam
-  ]
-}
-
-module "web-front" {
-  source    = "./modules/front"
-  name      = "web-front"
-  location  = var.location
-  image_url = var.image_url
-
-  depends_on = [
-    module.iam
+    module.service
   ]
 }
 
@@ -55,7 +44,7 @@ module "web-firewall" {
   project_id   = module.web-api.project
 
   depends_on = [
-    module.iam
+    module.service
   ]
 }
 
@@ -67,7 +56,7 @@ module "nosql-database" {
   env        = var.env
 
   depends_on = [
-    module.iam
+    module.service
   ]
 }
 
