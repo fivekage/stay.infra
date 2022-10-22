@@ -37,12 +37,8 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       # Set up the gcloud CLI
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@master
-        with:
-          project_id: ${{ secrets.TF_VAR_PROJECT_ID }}
-          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-          export_default_credentials: true
+      - name: Set up project
+        run: gcloud config set project $TF_VAR_project_id
 
       # Enable Cloud Resource Manager API
       - name: Enable Cloud Resource Manager API
