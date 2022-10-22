@@ -23,9 +23,7 @@ module "iam" {
 module "web-api" {
   source        = "./modules/api"
   project_id    = var.project_id
-  region        = var.region
-  database_type = "CLOUD_FIRESTORE"
-  env           = var.env
+  format        = "DOCKER"
   repository_id = "${var.repository_id}-${var.env}"
   location      = var.location
 
@@ -41,7 +39,7 @@ module "web-firewall" {
   action       = "ALLOW"
   description  = "Allow all IPs to access this resource"
   priority     = 1000
-  project_id   = module.web-api.project
+  project_id   = var.project_id
 
   depends_on = [
     module.service
