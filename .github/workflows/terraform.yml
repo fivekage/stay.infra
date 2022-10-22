@@ -36,9 +36,15 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      # Login to Google Cloud
+      - name: "Authenticate to Google Cloud"
+        uses: "google-github-actions/auth@v0"
+        with:
+          credentials_json: "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }"
+
       # Set up the gcloud CLI
       - name: Set up project
-        run: gcloud config set project $TF_VAR_project_id
+        run: gcloud config set project ${{ secrets.TF_VAR_PROJECT_ID }}
 
       # Enable Cloud Resource Manager API
       - name: Enable Cloud Resource Manager API
