@@ -17,6 +17,7 @@ jobs:
       TF_VAR_project_id: ${{ secrets.TF_VAR_PROJECT_ID }}
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GCP_PROJECT: ${{ secrets.CLOUDSDK_CORE_PROJECT }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
@@ -42,7 +43,7 @@ jobs:
 
       # Set up the gcloud CLI
       - name: Set up project
-        run: gcloud config set project $TF_VAR_project_id
+        run: gcloud config set project $GCP_PROJECT
 
       # Enable Cloud Resource Manager API
       - name: Enable Cloud Resource Manager API
