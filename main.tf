@@ -52,7 +52,7 @@ module "web-firewall" {
 module "nosql-database" {
   source     = "./modules/firebase"
   project_id = var.project_id
-  location   = "EU"
+  location   = var.region
   env        = var.env
 
   depends_on = [
