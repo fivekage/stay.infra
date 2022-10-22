@@ -16,3 +16,12 @@ resource "google_app_engine_domain_mapping" "web_api_domain_mapping" {
   }
 }
 */
+
+
+# Artifact Registry to store Docker images
+resource "google_artifact_registry_repository" "this" {
+  location      = var.location
+  repository_id = var.repository_id
+  description   = "Docker images for ${var.project_id}"
+  format        = "DOCKER"
+}

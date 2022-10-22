@@ -3,13 +3,15 @@ variable "env" {
   type        = string
 }
 
-variable "project_name" {
-  description = "Project name"
+variable "owner" {
+  description = "Owner of the resource"
   type        = string
+  default     = ""
 }
 
-variable "billing_account" {
-  description = "Billing Account"
+
+variable "project_name" {
+  description = "Project name"
   type        = string
 }
 
@@ -39,7 +41,18 @@ variable "GOOGLE_CREDENTIALS" {
   type        = string
 }
 
-variable "image_url" {
-  description = "URL image application"
+variable "service_account_id" {
+  description = "Stay Service Account"
+  type        = string
+}
+
+variable "role" {
+  description = "Role"
+  type        = string
+  default     = "roles/owner"
+}
+
+variable "repository_id" {
+  description = "Artifact Repository ID"
   type        = string
 }
