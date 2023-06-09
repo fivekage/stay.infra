@@ -10,7 +10,7 @@ Here is the full code which build a part of infrastructure required for Stay pro
 - https://github.com/fivekage/stay.api
 
 You can find below the architecture designed which represent all resources in Google Cloud Platform.
-[![Architecture](http://image.noelshack.com/fichiers/2022/42/6/1666458536-architecture.jpg)]
+[![Architecture](./docs/architecture.png)]
 
 ## Installation
 
